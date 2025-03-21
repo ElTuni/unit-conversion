@@ -29,6 +29,7 @@ input {
     color: inherit;
     font-weight: 900;
     font-size: 3rem;
+    caret-color: transparent;
 
     width: 100px;
     min-width: 100px;
@@ -42,6 +43,10 @@ input {
     margin: 20px 0;
 }
 
+input::placeholder {
+    color: white;
+    opacity: 0.5;
+}
 button{
     width: 100px;
     padding: 10px;
