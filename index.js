@@ -7,11 +7,10 @@ const massEl = document.getElementById("mass")
 
 
 
-function convert(num, rule) {
-    
+function convert(num, rule, convertion1, convertion2) {
     let meters_feet = (Number(num) * rule).toFixed(3)
     let feet_meeter = (Number(num) / rule).toFixed(3)
-    return `${num} meters = ${meters_feet} feet | ${num} feet = ${feet_meeter} meters`
+    return `${num} ${convertion1} = ${meters_feet} ${convertion2} | ${num} ${convertion2} = ${feet_meeter} ${convertion1}`
 
 }
 
@@ -20,10 +19,15 @@ function convert(num, rule) {
 
 
 convertBttn.addEventListener("click", function(){
-    lengthEl.textContent = convert(inputNum.value, 3.281)
-    volumeEl.textContent = convert(inputNum.value, 0.264)
-    massEl.textContent = convert(inputNum.value, 2.204)
-})
+    const userInput = inputNum.value
+    console.log(userInput)
+    if (userInput === "0" || userInput === "") {
+        null
+    }else {
+        lengthEl.textContent = convert(userInput, 3.281, "meters", "feet")
+        volumeEl.textContent = convert(userInput, 0.264, "liters", "gallons")
+        massEl.textContent = convert(userInput, 2.204, "kilos", "pounds")
+    }})
 
 inputNum.addEventListener("input", function () {
     this.value = this.value.replace(/[^0-9]/g, ""); // Allow only numbers
